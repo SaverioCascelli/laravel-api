@@ -10,7 +10,7 @@ export default {
 
 
 <template>
-    <div class="project-card"> 
+    <div class="project-card">
         <div class="card-title">
             <strong>Title:{{ name }}</strong>
         </div>
@@ -19,13 +19,16 @@ export default {
             {{ text }}
         </div>
     </div>
-  
+
 </template>
 
 
-<style>
+<style lang="scss" scoped>
 .project-card{
-    width: calc(100% / 6);
-    margin: 10px;
+    width: calc((100% / 5) );
+    padding: 10px;
+    margin: 10px 0 10px 0;
+    height: 150px;
+    overflow: hidden;
 }
 </style>

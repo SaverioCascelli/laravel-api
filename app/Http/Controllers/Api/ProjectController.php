@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $data = Project::all();
+        $data = Project::paginate(10);
         return response()->json(compact('data'));
     }
 }
