@@ -1,10 +1,14 @@
 <script>
 import projectCard from './components/projectCard.vue';
 import axios from 'axios';
-
+import Header from './partials/header.vue'
 
 export default{
-  components: { projectCard },
+  components: {
+    projectCard,
+    Header,
+},
+
   name:'App',
   data(){
     return{
@@ -33,9 +37,14 @@ export default{
 </script>
 
 <template>
+    <header>
+        <Header />
+
+    </header>
   <main>
 
-    <div class="container">
+    <router-view></router-view>
+    <!-- <div class="container">
         <div class="project-container">
         <projectCard
         v-for="project in projects"
@@ -52,7 +61,7 @@ export default{
                 :key = "(key + 1)"
             >{{ key + 1 }}</button>
         </div>
-    </div>
+    </div> -->
   </main>
 
 </template>
