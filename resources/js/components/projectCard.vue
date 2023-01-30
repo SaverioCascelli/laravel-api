@@ -22,7 +22,7 @@ export default {
                 <div class="card-text">
                     {{ project.summary }}
                 </div>
-                <div v-if="project.technologies > 0" class="technlogies-wrapper">
+                <div v-if="project.technologies.length > 0" class="technlogies-wrapper">
 
                     <p v-for="(technology, key) in project.technologies " :key="key" class="badge text-bg-primary me-1">
                         {{ technology.name }}
@@ -40,6 +40,7 @@ export default {
 
 .project-card {
     height: 200px;
+    color: black;
 
     .card-title {
         height: 50px;

@@ -37,16 +37,20 @@ export default {
         <div class="row justify-content-between">
             <projectCard v-for=" project in projects" :key="project.id" :project="project" />
         </div>
+        <div class="row">
 
-        <div class="pagination">
-            <button v-for="(page, key) in pageData.links" @click="getApi(pageData.links[key].url)" :key="(key)">
-                <span v-if="key == 0"><i class="bi bi-arrow-left-short"></i></span>
-                <span v-if="key > 0 && key < pageData.links.length - 1">{{ key }}</span>
+            <div class="pagination justify-content-center ">
 
-                <span v-if="key == pageData.links.length"><i class="bi bi-arrow-right-short"></i></span>
-            </button>
+                <button v-for="(page, key) in pageData.links" @click="getApi(pageData.links[key].url)" :key="(key)"
+                    class="btn btn-outline-light me-1"
+                    :disabled="(page.active || pageData.current_page == 1 && key == 0 || pageData.current_page == pageData.last_page && key == pageData.last_page + 1)">
 
+                    <span v-html="page.label"></span>
+                </button>
+
+            </div>
         </div>
+
     </div>
 </template>
 <style scoped lang="scss">
@@ -57,10 +61,7 @@ export default {
     .pagination {
         margin-top: 80px;
 
-        button {
-            width: 30px;
-            aspect-ratio: 1 / 1;
-        }
+
     }
 }
 </style>
