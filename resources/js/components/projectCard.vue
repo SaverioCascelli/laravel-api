@@ -1,22 +1,34 @@
 <script>
 export default {
-    name:'projectCard',
-    props:{
-        name:String,
-        text:String,
+    name: 'projectCard',
+    props: {
+        project: Object,
     }
 }
 </script>
 
 
 <template>
-    <div class="project-card">
-        <div class="card-title">
-            <strong>Title:{{ name }}</strong>
-        </div>
+    <div class=" col-4 card-wrapper p-3">
+        <div class="card project-card">
 
-        <div class="card-text">
-            {{ text }}
+            <div class="card-title pt-2 ps-2">
+                <router-link :to="{ name: 'show', params: { slug: project.slug } }">{{ project.name }}</router-link>
+                <br>
+                <p class="badge text-bg-success " v-if="project.type != null">{{ project.type.name }}</p>
+            </div>
+
+            <div class="card-body mt-2">
+                <div class="card-text">
+                    {{ project.summary }}
+                </div>
+                <div v-if="project.technologies > 0" class="technlogies-wrapper">
+
+                    <p v-for="(technology, key) in project.technologies " :key="key" class="badge text-bg-primary me-1">
+                        {{ technology.name }}
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -24,11 +36,18 @@ export default {
 
 
 <style lang="scss" scoped>
-.project-card{
-    width: calc((100% / 5) );
-    padding: 10px;
-    margin: 10px 0 10px 0;
-    height: 150px;
-    overflow: hidden;
+@use '../../scss/appVue.scss';
+
+.project-card {
+    height: 200px;
+
+    .card-title {
+        height: 50px;
+    }
+
+    .card-text {
+        height: 70px;
+        overflow: hidden;
+    }
 }
 </style>

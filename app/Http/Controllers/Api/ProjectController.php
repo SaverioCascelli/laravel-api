@@ -10,7 +10,16 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $data = Project::paginate(10);
+        $data = Project::with(['type', 'technologies'])->paginate(9);
         return response()->json(compact('data'));
+    }
+
+    public function showBySlug(string $slug)
+    {
+        $project = Project::with(['type', 'technologies'])->where('slug', $slug)->first();
+        if ($project->img == null) {
+            $project->img = "https://www.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg";
+        }
+        return response()->json(compact('project'));
     }
 }

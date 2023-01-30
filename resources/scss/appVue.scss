@@ -1,3 +1,5 @@
+
+@import '~bootstrap/scss/bootstrap';
 * {
     margin: 0;
     padding: 0;
@@ -5,5 +7,7 @@
 }
 
 body {
+    color: white;
+    background-color: #14213d;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

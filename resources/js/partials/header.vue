@@ -5,18 +5,28 @@ export default {
 }
 </script>
 <template>
+    <div class="container mt-5">
+        <div class="row">
+            <ul class="col">
+                <li>
+                    <router-link class="btn btn-warning" :to="{ name: 'home' }">home</router-link>
+                </li>
+                <li>
+                    <router-link class="btn btn-warning" :to="{ name: 'projects' }">projects</router-link>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <ul>
-        <li>
-            <router-link :to="{name:'home'}">home</router-link>
-        </li>
-        <li>
-            <router-link :to="{name:'test'}">test</router-link>
-        </li>
-    </ul>
 
 </template>
 
-<style>
+<style lang="scss" scoped>
+ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
 
+
+}
 </style>

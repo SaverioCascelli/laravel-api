@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from './pages/home.vue';
-import Test from './pages/Test.vue';
+import Projects from './pages/projects.vue';
 import Error404 from './pages/Error404.vue';
+import projectShow from './pages/projectShow.vue';
 
 const router = createRouter({
 
@@ -14,10 +15,19 @@ const router = createRouter({
             component: Home
         },
         {
-            path: '/test',
-            name: 'test',
-            component: Test
+            path: '/projects',
+            name: 'projects',
+            component: Projects
         },
+        {
+            path:'/projects/:slug',
+            name:'show',
+            component: projectShow
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            component: Error404
+        }
     ]
 });
 
